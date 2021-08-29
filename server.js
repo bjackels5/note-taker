@@ -1,7 +1,7 @@
 // NOTE-TAKER server.js
 
 const path = require('path');
-// const apiRoutes = require('./routes/apiRoutes');
+const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
 const express = require('express');
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // app.use apiRoutes and htmlRoutes MUST come AFTER express.static public.
-// app.use('/api', apiRoutes);
+app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
 
