@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { validateNote, createNewNote } = require('../../lib/notes');
+const { validateNote, createNewNote, saveNotesToDB } = require('../../lib/notes');
 
 const storedNotes = require('../../db/db.json');
 
@@ -25,5 +25,19 @@ router.post('/notes', (req, res) => {
         res.json(note);
     }
 });
+
+router.delete('/notes/:id', (req, res) => {
+    const idMatches = (note) => note.id === req.params.id;
+    const indexToRemove = storedNotes.findIndex(idMatches);
+
+    if (indexToRemove > -1) {
+        storedNotes.splice(indexToRemove, 1);
+        saveNotesToDB(storedNotes);
+        res.json(storedNotes);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
 
 module.exports = router;
