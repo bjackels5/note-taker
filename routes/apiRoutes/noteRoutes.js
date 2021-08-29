@@ -1,27 +1,24 @@
 const router = require('express').Router();
 
-const { validateNote, createNewNote, saveNotesToDB } = require('../../lib/notes');
+const ns = require('../../lib/notes');
 
 const storedNotes = require('../../db/db.json');
 
 router.get('/notes', (req, res) => {
-    /*
-    let results = storedNotes;
-    if (req.query) {
-        results = filterByQuery(req.query, results);
-    }
-    */
    res.json(storedNotes);
 });
 
 router.post('/notes', (req, res) => {
     // req.body is where our incoming content will be
-    req.body.id = (storedNotes.length + 1).toString();
-    if (!validateNote(req.body)) {
+    // since we allow notes to be deleted, the length of the array +1 is not guaranteed
+    // to be a unique id. Use getMaxId to get the current max id, add 1 to id to guarantee a 
+    // unique id
+    req.body.id = (ns.getMaxId(storedNotes) + 1).toString();
+    if (!ns.validateNote(req.body)) {
         res.status(400).send('The note is not properly formatted.');
     }
     else {
-        const note = createNewNote(req.body, storedNotes);
+        const note = ns.createNewNote(req.body, storedNotes);
         res.json(note);
     }
 });
@@ -32,7 +29,7 @@ router.delete('/notes/:id', (req, res) => {
 
     if (indexToRemove > -1) {
         storedNotes.splice(indexToRemove, 1);
-        saveNotesToDB(storedNotes);
+        ns.saveNotesToDB(storedNotes);
         res.json(storedNotes);
     } else {
         res.sendStatus(404);
