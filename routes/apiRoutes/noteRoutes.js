@@ -11,8 +11,6 @@ router.get('/notes', (req, res) => {
         results = filterByQuery(req.query, results);
     }
     */
-   console.log("loaded notes: ");
-   console.log(storedNotes);
    res.json(storedNotes);
 });
 

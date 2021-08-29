@@ -26,7 +26,6 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () => 
-
     fetch('/api/notes', {
         method: 'GET',
         headers: {
@@ -34,7 +33,6 @@ const getNotes = () =>
         },
     })
     .then(jsonNotes => {
-        console.log(JSON.stringify(jsonNotes));
         return jsonNotes;
     });
 
@@ -124,7 +122,6 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
-    console.log("renderNoteList called");
     let jsonNotes = await notes.json();
     if (window.location.pathname === '/notes') {
         noteList.forEach((el) => (el.innerHTML = ''));
@@ -181,7 +178,6 @@ const renderNoteList = async (notes) => {
 const getAndRenderNotes = () => 
     getNotes()
     .then(notes => {
-        console.log("getAndRenderNotes notes:", + notes);
         renderNoteList(notes);
     });
 
