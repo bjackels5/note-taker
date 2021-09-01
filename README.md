@@ -41,6 +41,7 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 * Clicking the Save icon will save the entered title and text and the note will appear in the left hand column with the other existing notes.
 * Clicking on an existing note in the left hand list will make the note title and text appear in the right hand column (read only).
 * Clicking on the Write icon will clear the fields in the right hand column so the user can enter a new note.
+* BONUS: Clicking the delete button will delete the associated note and remove it from the list on the left hand side. 
 
 ---
 
