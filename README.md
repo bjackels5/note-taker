@@ -80,12 +80,12 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 <a id="projectURL"></a>
 ## Note Taker URL
-[Note Taker URL](https://arcane-bastion-05431.herokuapp.com/)
+[Note Taker URL](https://note-taker-bjackels5.herokuapp.com/)
 
 ---
 <a id="projectHeroku"></a>
 ## Note Taker Heroku Git Link
-[Note Taker Heroku Git Link](https://git.heroku.com/arcane-bastion-05431.git
+[Note Taker Heroku Git Link](https://git.heroku.com/note-taker-bjackels5.git
 )
 
 ---
